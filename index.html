@@ -1,1 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Julia Pongeluppi França</title>
+    <style>
+        h1{
+            color: white;
+        }
+        #div4{
+            background-color: #ff00a6;
+            padding: 30px;
+        }
+        h2, h3{
+            color: #dd0090;
+        }
+        body{
+            background-color: #fda1ff;
+            text-align: center;
+        }
+        #div1{
+            width: fit-content;
+            margin: 20px auto;
+            padding: 10px;
+        }
+        #div2{
+            border: 5px solid #ff00a6;
+            background-color: white;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 10px;
+        }
+        #div2 p{
+            font-weight: bold;
+        }
 
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .box{
+            background-color: pink;
+            width: fit-content;
+            margin: 10px;
+            padding: 15px;
+        }
+        button{
+            font-weight: b;
+            border: 3px solid #000000;
+            border-radius: 20%;
+            background-color: #ff00a6;
+            margin: 20px auto;
+            padding: 15px;
+        }
+        ul{
+            display: inline-block;
+            text-align: left;
+        }
+        li::marker{
+            color: #dc143c;
+        }
+    </style>
+</head>
+<body>
+    <div id="div4">
+        <h1><i>Júlia Pongeluppi França</i></h1>
+    </div>
+    <div id="div1">
+        <img width="300px" src="julia1.jpg"></img>
+        <h2>Quem sou eu</h2>
+        <p>Meu nome é Júlia Pongeluppi França, e sou atualmente aluna do Bacharelado em Ciência da Computação -IME USP, sendo essa minha segunda graduação.</p>
+        <h3>Formação</h3>
+        <div class="container">
+            <div class="box">Licenciatura em Ciências Biológicas - Completo</div>
+            <div class="box">Bacharelado em Ciência da Computação - Incompleto</div>
+        </div>
+    </div>
+    <div id="div2">
+        <h2><i>Experiência profissional/Disciplinas cursadas/Cursos</i></h2>
+        <div class="container">
+            <button id="bio"><strong>Ciências Biológicas</strong></button>
+            <button id="bcc"><strong>Ciência da Computação</strong></button>
+        </div>
+        <div id="div3"></div>
+    </div>
+
+    <script>
+        const disciplinas = [
+            "MAC0101 - Integração na Universidade e na Profissão",
+            "MAC0105 - Fundamentos de Matemática para a Computação",
+            "MAC0110 - Introdução à Computação",
+            "MAC0329 - Álgebra Booleana e Aplicações no Projeto de Arquitetura de Computadores",
+            "MAT0112 - Vetores e Geometria",
+            "MAT2453 - Cálculo Diferencial e Integral I",
+            "MAC0121 - Algoritmos e Estruturas de Dados I",
+            "MAC0216 - Técnicas de Programação I",
+            "MAC0239 - Introdução à Lógica e Verificação de Programas",
+            "MAE0119 - Introdução à Probabilidade e à Estatística",
+            "MAT0122 - Álgebra Linear I",
+            "MAT2454 - Cálculo Diferencial e Integral II",
+            "MAC0102 - Caminhos no Bacharelado em Ciência da Computação",
+            "MAC0209 - Modelagem e Simulação",
+            "MAC0210 - Laboratório de Métodos Numéricos",
+            "MAC0323 - Algoritmos e Estruturas de Dados II",
+            "MAT0236 - Funções Diferenciáveis e Séries"
+            ];
+            const obj = ["Fazer IC", "Fazer estágio", "Seguir a trilha de Sistemas de Software"];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let botoes = document.querySelectorAll('button');
+            botoes[0].addEventListener("click", function(){
+                const div = document.getElementById('div3');
+                div.innerHTML = '';
+                const p1 = document.createElement('p');
+                const ul1 = document.createElement('ul');
+                const li1 = document.createElement('li');
+                const li2 = document.createElement('li');
+                p1.innerHTML = `Experiência profissional:`;
+                li1.innerHTML = `1 ano de experiência como professora de ciências - 6º ao 9º ano`;
+                li2.innerHTML = `Aprovação no Concurso Público da Secretaria Municipal de Educação da Prefeitura do Município de São Paulo`;
+                ul1.append(li1);
+                ul1.append(li2);
+                document.getElementById('div3').append(p1, ul1);
+
+            })
+            botoes[1].addEventListener("click", function(){
+                const div = document.getElementById('div3');
+                div.innerHTML = '';
+                const p1 = document.createElement('p');
+                const p2 = document.createElement('p');
+                const p3 = document.createElement('p');
+                const ul1 = document.createElement('ul');
+                const ul2 = document.createElement('ul');
+                const ul3 = document.createElement('ul');
+                const li2 = document.createElement('li');
+                p1.innerHTML = `Disciplinas já cursadas:`;
+                for (let i = 0; i < disciplinas.length; i++){
+                    const li1 = document.createElement('li');
+                    li1.innerHTML = disciplinas[i];
+                    ul1.append(li1);
+                }
+                p2.innerHTML = `Cursos realizados:`
+                li2.innerHTML = `IX Curso de Introdução à Programação Competitiva - Bixecamp`;
+                ul2.append(li2);
+                p3.innerHTML = `Objetivos futuros`
+                for (let j = 0; j < obj.length; j++){
+                    const li3 = document.createElement('li');
+                    li3.innerHTML = obj[j];
+                    ul3.append(li3);
+                }
+                document.getElementById('div3').append(p1, ul1, p2, ul2, p3, ul3);
+
+            })
+        })
+    </script>
+
+</body>
+</html>
