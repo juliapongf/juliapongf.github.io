@@ -24,6 +24,7 @@
             width: fit-content;
             margin: 20px auto;
             padding: 10px;
+            background-color: transparent;
         }
         ul{
             display: inline-block;
@@ -50,9 +51,10 @@
     </div>
 
     <img width="300px"></img>
+    <p id="p1"></p>
     
     <div id="div2">
-        <p></p>
+        <p id="p2"></p>
         <div><ul></ul></div>
     </div>
 
@@ -69,6 +71,12 @@
                         [2, 1, 2, 3, 1, 1, 0, 0, 8, 0, 10, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 1, 0, 5, 3, 0, 0, 0, 2, 0],
                         [0, 1, 0, 2, 0, 3, 4, 3, 0, 0, 2, 0, 0, 10, 4, 0, 1, 2, 13, 1, 1, 0, 0, 4, 0, 0, 7, 12, 1, 2, 0]];
         const books = ["A Game of Thrones", "A Clash of Kings", "A Storm of Swords", "A Feast for Crows", "A Dance with Dragons"];
+        const images = ["im0.jpg", "im1.jpg", "im2.jpg", "im3.jpg", "im4.jpg", "im5.jpg", "im6.jpg", "im7.jpg", "im8.jpg", "im9.jpg", "im10.jpg", "im11.jpg",
+        "im12.jpg", "im13.jpg", "im14.jpg", "im15.jpg", "im16.jpg", "im17.jpg", "im18.jpg", "im19.jpg", "im20.jpg", "im21.jpg", "im22.jpg", "im23.jpg", "im24.jpg",
+        "im25.jpg", "im26.jpg", "im27.jpg", "im28.jpg", "im29.jpg", "im30.jpg"];
+        const artists = ["Amok", "Hubsher", "Chillyravenart", "Amok", "Ray-botic", "Amok", "Amok", "Amok", "Amok", "Amok", "Amok", "Shebsart", "mcf", "Amok", "Amok",
+        "Amok", "Amok", "rancidjuno", "Amok", "Amok", "Amok", "Shebsart", "Sanrixian", "Mustamirri", "Amok", "Amok", "Amok", "Amok", "Elena María Vacas",
+        "InTheArmsOfUndertow", "Shebsart"];
 
         // borda desativada quando não há nada escrito
         const div2 = document.getElementById('div2');
@@ -89,17 +97,21 @@
                 // se nada selecionado, limpa tudo
                 if (this.value === ""){
                     div2.style.border = "none";
+                    div2.style.backgroundColor = "transparent";
                     document.querySelector('img').src = '';
-                    document.querySelector('p').innerHTML = '';
+                    document.getElementById('p1').innerHTML = '';
+                    document.getElementById('p2').innerHTML = '';
                     document.querySelector('ul').innerHTML = '';
                 }
 
                 // se personagem selecionado, preenche os dados do personagem
                 else{
                     document.querySelector('img').src = images[this.value];
+                    document.getElementById('p1').innerHTML = `Art by ${artists[this.value]}`;
 
                     // ativando borda
                     div2.style.border = "5px solid #dc143c";
+                    div2.style.backgroundColor = "white";
 
                     // imprimindo total de capítulos (se o personagem for um dos top 5 com masis capítulos, ativa um alerta)
                     const total = chapters[0][this.value]+chapters[1][this.value]+chapters[2][this.value]+chapters[3][this.value]+chapters[4][this.value];
@@ -107,10 +119,10 @@
                         alert(`${pov_characters[this.value]} is in the top 5 characters with the most chapters!`);
                     }
                     if (total === 1){
-                        document.querySelector('p').innerHTML = `${pov_characters[this.value]} has ${total} chapter in "A Song of Ice and Fire:`;
+                        document.getElementById('p2').innerHTML = `${pov_characters[this.value]} has ${total} chapter in "A Song of Ice and Fire":`;
                     }
                     else{
-                        document.querySelector('p').innerHTML = `${pov_characters[this.value]} has ${total} chapters in "A Song of Ice and Fire:`;
+                        document.getElementById('p2').innerHTML = `${pov_characters[this.value]} has ${total} chapters in "A Song of Ice and Fire":`;
                     }
 
                     // imprimindo a quantidade de capítulos por livro
@@ -131,7 +143,6 @@
                 }  
             };
         });
-        const images = ["oi.png", "ai.png"]
     </script>
 
 </body>
