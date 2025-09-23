@@ -27,7 +27,7 @@
         #div2{
             border: 5px solid #ff00a6;
             background-color: white;
-            width: fit-content;
+            width: 55%;
             margin: 20px auto;
             padding: 10px;
         }
@@ -53,6 +53,10 @@
             background-color: #ff00a6;
             margin: 20px auto;
             padding: 15px;
+        }
+        .mybutton:hover{
+            color:#484848;
+            background-color:#ff31b7;
         }
         ul{
             display: inline-block;
@@ -80,8 +84,8 @@
     <div id="div2">
         <h2><i>Experiência profissional/Disciplinas cursadas/Cursos</i></h2>
         <div class="container">
-            <button id="bio"><strong>Ciências Biológicas</strong></button>
-            <button id="bcc"><strong>Ciência da Computação</strong></button>
+            <button class="mybutton" id="bio"><strong>Ciências Biológicas</strong></button>
+            <button class="mybutton" id="bcc"><strong>Ciência da Computação</strong></button>
         </div>
         <div id="div3"></div>
     </div>
@@ -110,47 +114,66 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             let botoes = document.querySelectorAll('button');
+            let contador = [0, 0];
             botoes[0].addEventListener("click", function(){
+                contador[0] = (contador[0]+1)%2;
+                if (contador[1] === 1){
+                    contador[1] = (contador[1]+1)%2;
+                }
                 const div = document.getElementById('div3');
-                div.innerHTML = '';
-                const p1 = document.createElement('p');
-                const ul1 = document.createElement('ul');
-                const li1 = document.createElement('li');
-                const li2 = document.createElement('li');
-                p1.innerHTML = `Experiência profissional:`;
-                li1.innerHTML = `1 ano de experiência como professora de ciências - 6º ao 9º ano`;
-                li2.innerHTML = `Aprovação no Concurso Público da Secretaria Municipal de Educação da Prefeitura do Município de São Paulo`;
-                ul1.append(li1);
-                ul1.append(li2);
-                document.getElementById('div3').append(p1, ul1);
+                if (contador[0] === 1){
+                    div.innerHTML = '';
+                    const p1 = document.createElement('p');
+                    const ul1 = document.createElement('ul');
+                    const li1 = document.createElement('li');
+                    const li2 = document.createElement('li');
+                    p1.innerHTML = `Experiência profissional:`;
+                    li1.innerHTML = `1 ano de experiência como professora de ciências - 6º ao 9º ano`;
+                    li2.innerHTML = `Aprovação no Concurso Público da Secretaria Municipal de Educação da Prefeitura do Município de São Paulo`;
+                    ul1.append(li1);
+                    ul1.append(li2);
+                    document.getElementById('div3').append(p1, ul1);
+                }
+                else{
+                    div.innerHTML = '';
+                }
 
             })
             botoes[1].addEventListener("click", function(){
+                contador[1] = (contador[1]+1)%2;
+                if (contador[0] === 1){
+                    contador[0] = (contador[0]+1)%2;
+                }
                 const div = document.getElementById('div3');
-                div.innerHTML = '';
-                const p1 = document.createElement('p');
-                const p2 = document.createElement('p');
-                const p3 = document.createElement('p');
-                const ul1 = document.createElement('ul');
-                const ul2 = document.createElement('ul');
-                const ul3 = document.createElement('ul');
-                const li2 = document.createElement('li');
-                p1.innerHTML = `Disciplinas já cursadas:`;
-                for (let i = 0; i < disciplinas.length; i++){
-                    const li1 = document.createElement('li');
-                    li1.innerHTML = disciplinas[i];
-                    ul1.append(li1);
+                if (contador[1] === 1){
+                    div.innerHTML = '';
+                    const p1 = document.createElement('p');
+                    const p2 = document.createElement('p');
+                    const p3 = document.createElement('p');
+                    const ul1 = document.createElement('ul');
+                    const ul2 = document.createElement('ul');
+                    const ul3 = document.createElement('ul');
+                    const li2 = document.createElement('li');
+                    p1.innerHTML = `Disciplinas já cursadas:`;
+                    for (let i = 0; i < disciplinas.length; i++){
+                        const li1 = document.createElement('li');
+                        li1.innerHTML = disciplinas[i];
+                        ul1.append(li1);
+                    }
+                    p2.innerHTML = `Cursos realizados:`
+                    li2.innerHTML = `IX Curso de Introdução à Programação Competitiva - Bixecamp`;
+                    ul2.append(li2);
+                    p3.innerHTML = `Objetivos futuros`
+                    for (let j = 0; j < obj.length; j++){
+                        const li3 = document.createElement('li');
+                        li3.innerHTML = obj[j];
+                        ul3.append(li3);
+                    }
+                    document.getElementById('div3').append(p1, ul1, p2, ul2, p3, ul3);
                 }
-                p2.innerHTML = `Cursos realizados:`
-                li2.innerHTML = `IX Curso de Introdução à Programação Competitiva - Bixecamp`;
-                ul2.append(li2);
-                p3.innerHTML = `Objetivos futuros`
-                for (let j = 0; j < obj.length; j++){
-                    const li3 = document.createElement('li');
-                    li3.innerHTML = obj[j];
-                    ul3.append(li3);
+                else{
+                    div.innerHTML = '';
                 }
-                document.getElementById('div3').append(p1, ul1, p2, ul2, p3, ul3);
 
             })
         })
